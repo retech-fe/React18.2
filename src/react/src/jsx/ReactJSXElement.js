@@ -26,7 +26,7 @@ function ReactElement(type, key, ref, props) {
   };
 }
 export function jsxDEV(type, config, maybeKey) {
-  console.log('xxxxx', '11111');
+  console.log('my self jsxDEV', 'src/react/jsx-dev-runtime.js');
   let propName; //属性名
   const props = {}; //属性对象
   let key = null; //每个虚拟DOM可以有一个可选的key属性，用来区分一个父节点下的不同子节点
