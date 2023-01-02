@@ -13,7 +13,7 @@ function createUpdate() {
   return {};
 }
 
-// 插入链表
+// 入队
 function enqueueUpdate(fiber, update) {
   const updateQueue = fiber.updateQueue;
   const shared = updateQueue.shared;
@@ -29,6 +29,7 @@ function enqueueUpdate(fiber, update) {
   updateQueue.shared.pending = update;
 }
 
+// 执行更新队列
 function processUpdateQueue(fiber) {
   const queue = fiber.updateQueue;
   const pending = queue.shared.pending;
