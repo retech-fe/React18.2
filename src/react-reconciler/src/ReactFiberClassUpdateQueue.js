@@ -1,3 +1,7 @@
+import { markUpdateLaneFromFiberToRoot } from './ReactFiberConcurrentUpdates';
+
+export const UpdateState = 0;
+
 export function initialUpdateQueue(fiber) {
   // 创建一个新的更新队列
   // pending其实是一个循环链表
@@ -10,7 +14,7 @@ export function initialUpdateQueue(fiber) {
 }
 
 export function createUpdate() {
-  const update = {};
+  const update = { tag: UpdateState };
   return update;
 }
 
@@ -24,6 +28,7 @@ export function enqueueUpdate(fiber, update) {
     update.next = pending.next;
     pending.next = update;
   }
-  updateQueue.shared.pending = update;
   //获取共享队列
+  updateQueue.shared.pending = update;
+  return markUpdateLaneFromFiberToRoot(fiber);
 }
